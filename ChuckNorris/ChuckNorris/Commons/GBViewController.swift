@@ -12,20 +12,25 @@ class GBViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.gbYellow
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactAppearance = appearance
-        
-        let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationItem.standardAppearance?.buttonAppearance = buttonAppearance
-        navigationItem.compactAppearance?.buttonAppearance = buttonAppearance
-        
-        navigationController?.navigationBar.tintColor = .white
+        if #available(iOS 13, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .gbYellow
+            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            
+            navigationItem.standardAppearance = appearance
+            navigationItem.scrollEdgeAppearance = appearance
+            navigationItem.compactAppearance = appearance
+            
+            let buttonAppearance = UIBarButtonItemAppearance()
+            buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navigationItem.standardAppearance?.buttonAppearance = buttonAppearance
+            navigationItem.compactAppearance?.buttonAppearance = buttonAppearance
+        } else {
+            navigationController?.navigationBar.barTintColor = .gbYellow
+            navigationController?.navigationBar.isTranslucent = true
+            navigationController?.navigationBar.tintColor = .white
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        }
     }
 }

@@ -26,7 +26,11 @@ class HomeViewController: GBViewController {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicatorView.hidesWhenStopped = true
-        activityIndicatorView.style = .large
+        if #available(iOS 13, *) {
+            activityIndicatorView.style = .large
+        } else {
+            activityIndicatorView.style = .gray
+        }
         return activityIndicatorView
     }()
     
