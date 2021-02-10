@@ -9,13 +9,14 @@
 import Foundation
 
 struct JokeResponse: Decodable {
-    let icon_url: String
+    let iconURL: String
     let value: String
 }
 
 extension JokeResponse {
-    enum codingKeys: String, CodingKey {
-        case icon_url
+    
+    enum CodingKeys: String, CodingKey {
+        case iconURL = "icon_url"
         case value
     }
 }

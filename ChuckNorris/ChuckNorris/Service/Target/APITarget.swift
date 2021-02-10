@@ -44,7 +44,8 @@ extension APITarget: TargetType {
         case .categories:
             return .requestPlain
         case .randomBy(let category):
-            return .requestParameters(parameters: ["category": category], encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: ["category": category],
+                                      encoding: URLEncoding.queryString)
         }
     }
     

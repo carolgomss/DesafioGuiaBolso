@@ -43,7 +43,7 @@ class HomeViewController: GBViewController {
     private func setupBinding() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
         viewModel.categories.bind(to: tableView.rx.items(cellIdentifier: "cellIdentifier")) { (_, category: String, cell) in
-            cell.textLabel?.text = category
+            cell.textLabel?.text = category.capitalized
         }
         .disposed(by: disposeBag)
         

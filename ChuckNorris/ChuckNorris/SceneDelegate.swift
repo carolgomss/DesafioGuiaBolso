@@ -16,18 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        
-        let backButtonBackgroundImage = UIImage(systemName: "list.bullet")
-        let barAppearance =
-            UINavigationBar.appearance(whenContainedInInstancesOf: [CustomBackButtonNavController.self])
-        barAppearance.backIndicatorImage = backButtonBackgroundImage
-        barAppearance.backIndicatorTransitionMaskImage = backButtonBackgroundImage
-        barAppearance.tintColor = .red
-        
-        let navigation = CustomBackButtonNavController(rootViewController: HomeViewController())
+        let navigation = UINavigationController(rootViewController: HomeViewController())
         window?.rootViewController = navigation
         window?.makeKeyAndVisible()
-        
     }
 }
 

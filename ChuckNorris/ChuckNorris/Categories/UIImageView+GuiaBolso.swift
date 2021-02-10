@@ -19,11 +19,19 @@ extension UIImageView {
         guard let webURL = URL(string: url) else {
             fatalError()
         }
-        if let cachedImage = imageCache.object(forKey: webURL.absoluteString as NSString) as? UIImage {
-            self.image = cachedImage
+        let cache = self.verifyCache(path: webURL.absoluteString)
+        if cache.exist {
+            self.image = cache.image
         } else {
             downloadImage(url: webURL)
         }
+    }
+    
+    private func verifyCache(path: String) -> (exist: Bool, image: UIImage?) {
+        guard let image =  imageCache.object(forKey: path as NSString) as? UIImage else {
+            return (false, nil)
+        }
+        return (true, image)
     }
     
     private func downloadImage(url: URL) {

@@ -34,7 +34,7 @@ class DetalsViewModel: DetalsViewModelProtocol {
             do {
                 let joke = try response.map(JokeResponse.self)
                 self?.jokeDetail.onNext(joke.value)
-                self?.jokeURLImage.onNext(joke.icon_url)
+                self?.jokeURLImage.onNext(joke.iconURL)
             } catch let error {
                 print(error)
                 self?.error.onNext("Não foi possível buscar a piada dessa categoria.")

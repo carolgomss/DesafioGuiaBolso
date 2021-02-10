@@ -9,35 +9,42 @@
 import XCTest
 
 class ChuckNorrisUITests: XCTestCase {
-
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    
+    func testSelecionando_Uma_Categoria_Dev_E_Voltando() {
         let app = XCUIApplication()
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        //Seleciona um item na tableView
+        let cell = app.tables.cells.staticTexts["dev"]
+        let exists = NSPredicate(format: "exists == 1")
+        expectation(for: exists, evaluatedWith: cell, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        cell.tap()
+        
+        //Clica em voltar após 5 segundos
+        let nav = app.navigationBars["dev"].buttons["Categories"]
+        expectation(for: exists, evaluatedWith: nav, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        nav.tap()
     }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    func testSelecionando_Uma_Categoria_Food_E_Voltando() {
+        let app = XCUIApplication()
+        app.launch()
+        //Seleciona um item na tableView
+        let cell = app.tables.cells.staticTexts["food"]
+        let exists = NSPredicate(format: "exists == 1")
+        expectation(for: exists, evaluatedWith: cell, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        cell.tap()
+        
+        //Clica em voltar após 5 segundos
+        let nav = app.navigationBars["food"].buttons["Categories"]
+        expectation(for: exists, evaluatedWith: nav, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
+        nav.tap()
     }
 }

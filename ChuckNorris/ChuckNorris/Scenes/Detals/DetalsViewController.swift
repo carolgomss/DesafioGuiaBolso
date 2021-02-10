@@ -39,7 +39,7 @@ class DetalsViewController: GBViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = category
+        title = category?.capitalized
         view.backgroundColor = .white
         setupSubViews()
         setupConstraints()

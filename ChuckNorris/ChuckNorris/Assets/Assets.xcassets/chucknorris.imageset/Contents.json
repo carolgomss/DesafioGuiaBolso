@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "chucknorris.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "chucknorris.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "chucknorris-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
