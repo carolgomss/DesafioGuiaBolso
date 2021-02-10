@@ -20,5 +20,12 @@ class GBViewController: UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance
+        
+        let buttonAppearance = UIBarButtonItemAppearance()
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationItem.standardAppearance?.buttonAppearance = buttonAppearance
+        navigationItem.compactAppearance?.buttonAppearance = buttonAppearance
+        
+        navigationController?.navigationBar.tintColor = .white
     }
 }

@@ -26,8 +26,8 @@ extension APITarget: TargetType {
         switch self {
         case .categories:
             return "jokes/categories"
-        case .randomBy(let category):
-            return "jokes/random?category=\(category)"
+        case .randomBy:
+            return "jokes/random"
         }
     }
     
@@ -40,7 +40,12 @@ extension APITarget: TargetType {
     }
     
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .categories:
+            return .requestPlain
+        case .randomBy(let category):
+            return .requestParameters(parameters: ["category": category], encoding: URLEncoding.queryString)
+        }
     }
     
     var headers: [String : String]? {

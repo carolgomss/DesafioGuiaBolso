@@ -47,8 +47,8 @@ class HomeViewController: GBViewController {
         }
         .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(String.self).subscribe(onNext: { category in
-           print(category)
+        tableView.rx.modelSelected(String.self).subscribe(onNext: { [weak self] category in
+            self?.navigateToDetail(category: category)
         }).disposed(by: disposeBag)
         
         viewModel.isLoading.bind { [weak self]  (isLoading) in
@@ -62,6 +62,12 @@ class HomeViewController: GBViewController {
         viewModel.error.bind { [weak self] (message) in
             self?.showErrorMessage(message)
         }.disposed(by: disposeBag)
+    }
+    
+    private func navigateToDetail(category: String) {
+        let controller = DetalsViewController()
+        controller.category = category
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     private func showErrorMessage(_ message: String) {
