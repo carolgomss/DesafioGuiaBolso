@@ -29,8 +29,8 @@ class GBViewController: UIViewController {
         } else {
             navigationController?.navigationBar.barTintColor = .gbYellow
             navigationController?.navigationBar.isTranslucent = true
-            navigationController?.navigationBar.tintColor = .white
             navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         }
+        navigationController?.navigationBar.tintColor = .white
     }
 }
